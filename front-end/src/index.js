@@ -1,15 +1,16 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom'
-import Hey, { App } from './ganesh';
-import { ganesan } from './kumaran';
+import Kumar from "./ganesh";
+import { Car } from "./kumaran";
+import app from "./hp";npm 
 
 ReactDOM.render(
   <>
-    <App/>
-    <Hey/>
-    <ganesan/>
-
+  <Car/>
+  <Kumar/>
+  <Hello/>
   </>
-  
+
+
   ,document.getElementById("root")
-)
+);
