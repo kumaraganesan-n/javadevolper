@@ -1,16 +1,10 @@
 import React from "react";
-import ReactDOM from 'react-dom'
-import Kumar from "./ganesh";
-import { Car } from "./kumaran";
-import app from "./hp";npm 
-
+import ReactDOM from 'react-dom';
+import { Recruite } from "./form";
 ReactDOM.render(
-  <>
-  <Car/>
-  <Kumar/>
-  <Hello/>
+   <>
+  <Recruite/>
   </>
 
-
   ,document.getElementById("root")
-);
+)

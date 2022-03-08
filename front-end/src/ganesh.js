@@ -1,18 +1,7 @@
-import React form "react";
+import React from "react";
 
-
-function App()
+const Kumar=()=>
 {
-    return(
-        <h1>React Basic Functional Componenet</h1>
-        
-    )
+ return(<h1>Kumaran</h1>);
 }
-function Hey()
-(
-    return (
-        <p> ganesan</p>
-    )
-)
-export {App}
-export default Hey;
+export default Kumar;
