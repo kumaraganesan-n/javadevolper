@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap-icons/font/bootstrap-icons.css"
-import { list } from "./API";
+import { fetchExact, list } from "./API";
 import { Recruite } from "./NewResource";
 import { Reading } from "./Read";
 import { Update } from "./Update";
@@ -12,7 +12,7 @@ export const Home=()=>{
     const[createView,setCreateView]=useState(false)
     const[readView,setReadView]=useState(false)
     const[UpdateView,setUpdateView]=useState(false)
-    const[pos,setpo]=useState(0)
+    const[pos,setPos]=useState(0)
     const[obj,setObj]=useState({})
 
 

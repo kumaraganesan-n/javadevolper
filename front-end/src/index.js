@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import { Recruite } from "./form";
+import { Home } from "./Home";
 
 
 ReactDOM.render(
    <>
-  <Recruite/>
+  <Home/>
   </>
 
   ,document.getElementById("root")

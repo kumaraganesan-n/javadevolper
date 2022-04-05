@@ -12,7 +12,7 @@ import { read1 } from "./API";
          callReading ()
      })
      const callReading=()=>{
-         setEmployee(read1(kumar.who))
+         setEmployee(read1n(kumar.who))
      }
      return(
         <>
