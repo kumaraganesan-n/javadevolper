@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { alter } from "./API";
+import { updateOne } from "./Connect";
 
 export const Update=(annamalai)=>{
 
@@ -8,15 +9,28 @@ export const Update=(annamalai)=>{
     const[pos,setPos]=useState(annamalai.who)
 
     const[person,setPerson]=useState({
+        "resId":annamalai.mention.resId,
         "resName":annamalai.mention.resName,
         "resPay":annamalai.mention.resPay,
         "resArea":annamalai.mention.resArea,
         "resSkills":annamalai.mention.resSkills
     })
+    useEffect(()=>{
+        let wind=""
+        person.resSkills.map((content)=>{
+            wind+=content+","
+        }
+        )
+        //replace reskilles form array ti simple text /string
+        person.resSkills=wind
 
-    const gopi=()=>{
-        alter(pos,person)
-        alert("Updated")
+    },[])
+
+    const gopi=async()=>{
+        //alter(pos,person)
+        person.resSkills=person.resSkills.split(",")
+       const t= await updateOne(person)
+       alert(t.data)
     }
     const dhana=()=>{
         alert("Rejected")
