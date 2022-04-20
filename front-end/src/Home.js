@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-//import "../node_modules/bootstrap-icons/font/bootstrap-icons.css"
-import { fetchExact, list } from "./API";
+import "../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+import { byName, fetchExact, list, read, wash } from "./API";
 import { Recruite } from "./NewResource";
-import { Reading } from "./Read";
+import { Read } from "./Read";
 import { Update } from "./Update";
 import { erase, gather } from "./Connect";
 
@@ -12,32 +12,33 @@ export const Home=()=>{
     const[tmpArray,setTmpArray]=useState([])
     const[createView,setCreateView]=useState(false)
     const[readView,setReadView]=useState(false)
-    const[UpdateView,setUpdateView]=useState(false)
+    const[updateView,setUpdateView]=useState(false)
     const[pos,setPos]=useState(0)
     const[obj,setObj]=useState({})
 
-
     const hello=async()=>{
         const t = await gather();
-         setTmpArray(t.data)
+        setTmpArray(t.data)
     }
+
     const toErase=async(value)=>{
         const hey=await erase(value)
         alert(hey.data)
         window.location.assign("/")
     }
+
     useEffect(()=>{
-        alert("about to call back end")
         hello()
     },[])
 
     return(
         <>
-             {/* {<Reading who="2"/> }  */}
+            {/* <Read who="2"/> */}
+            {/* <Update who="3"/> */}
             <div className="container mt-5">
-                {/* {<button onClick={hello}> */}
-                    {/* View */}
-                {/* </button> } */}
+                {/* <button onClick={hello}>
+                    View
+                </button> */}
                 {(createView)?
                 <>
                     <Recruite/>
@@ -47,11 +48,11 @@ export const Home=()=>{
                             window.location.assign("/")
                         }
                     }>
-                        <i class="bi bi-skip-backward-btn-fill"></i> Back
+                        <i className="bi bi-skip-backward-btn-fill"></i> Back
                     </button>
                 </>
                 :
-                (UpdateView)?
+                (updateView)?
                 <>
                     <Update mention={obj}/>
                     <button className="btn btn-outline-secondary" onClick={
@@ -66,13 +67,13 @@ export const Home=()=>{
                 :
                 (readView)?
                 <>
-                <Reading who={pos}/>
+                <Read who={pos}/>
                     <button className="btn btn-outline-secondary" onClick={
                         ()=>{
                             setReadView(false)
                         }
                     }>
-                        <i class="bi bi-skip-backward-btn-fill"></i> Back
+                        <i className="bi bi-skip-backward-btn-fill"></i> Back
                     </button>
                 </>
                 :
@@ -81,7 +82,7 @@ export const Home=()=>{
                         onClick={()=>{
                             setCreateView(true)
                         }}>
-                        <i class="bi bi-person-plus-fill"></i> New
+                        <i className="bi bi-person-plus-fill"></i> New
                     </button>
                     <div className="row justify-content-center">
                         <div className="table-responsive-md">
@@ -99,11 +100,11 @@ export const Home=()=>{
                                     {tmpArray.map((ele,index)=>(
                                         <tr>
                                             <td>
-                                                <button class="btn btn-outline-primary" onClick={()=>{
+                                                <button className="btn btn-outline-primary" onClick={()=>{
                                                     setReadView(true)
                                                     setPos(ele.resId)
                                                 }}>
-                                                    <i class="bi bi-book-half"></i>
+                                                    <i className="bi bi-book-half"></i>
                                                 </button>
                                                 {ele.resName}
                                             </td>
@@ -112,23 +113,21 @@ export const Home=()=>{
                                             <td>{ele.resSkills}</td>
                                             <td>
                                                 <button className="btn btn-outline-warning rounded-circle"
-                                                  onClick={()=>{
-                                                      setUpdateView(true)
-                                                     // setPos(index)
-                                                      //const y=fetchExact(ele.resName)
-                                                      setObj(ele)
-                                                              
-                                                    }}>
-                                                    Edit <i class="bi bi-pencil-fill"></i>
-
+                                                onClick={()=>{
+                                                    setUpdateView(true)
+                                                    //setPos(index)
+                                                    //const y=fetchExact(ele.resName)
+                                                    setObj(ele)
+                                                }}>
+                                                    Edit <i className="bi bi-pencil-fill"></i>
                                                 </button>
                                             </td>
                                             <td>
-                                                <button className="btn btn-outline-danger rounded-circle">
-                                                    onClick={()=>{
-                                                        //setTmpArray(wash(index))
-                                                        toErase(ele.resId)
-                                                    }}
+                                                <button className="btn btn-outline-danger rounded-circle"
+                                                onClick={()=>{
+                                                    //setTmpArray(wash(index))
+                                                    toErase(ele.resId)
+                                                }}>
                                                     Delete <i className="bi bi-trash-fill"></i>
                                                 </button>
                                             </td>

@@ -1,28 +1,28 @@
 let myemployees=[
     {
-        "resName":"kumaraganesan",
+        "resName":"Razak Mohamed S",
         "resPay":200000,
         "resArea":"Salem",
         "resSkills":["Java","JavaScript","Python"]
     },
     {
-        "resName":"giri venkatesh",
+        "resName":"Rasheedha R",
         "resPay":200000,
         "resArea":"Salem",
         "resSkills":["JavaScript","Python"]
     },
     {
-        "resName":"kavin",
+        "resName":"Titus C",
         "resPay":10000,
         "resArea":"Chennai",
         "resSkills":["Java"]
     },
     {
-        "resName":"Nantha",
+        "resName":"Murali S",
         "resPay":50000,
         "resArea":"Banglore",
         "resSkills":["Java","Python"]
-    },
+    }
 ]
 
 export const create=(obj)=>{
@@ -32,8 +32,9 @@ export const create=(obj)=>{
 export const list=()=>{
     return myemployees
 }
-export const read1=(index)=>{
-    return myemployees[index]
+
+export const read=(index)=>{
+    return myemployees[index];
 }
 
 export const fetchExact=(name)=>{
@@ -42,6 +43,14 @@ export const fetchExact=(name)=>{
     })
     return tmp[0]
 }
+
 export const alter=(place,data)=>{
     myemployees[place]=data
+}
+
+export const wash=(index)=>{
+    myemployees=myemployees.filter((d,i)=>{
+        return i!==index
+    })
+    return myemployees;
 }
